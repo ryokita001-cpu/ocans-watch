@@ -17,6 +17,7 @@ echo "$(TZ=Asia/Tokyo date '+%F %T') $status (prev: ${prev:-none})"
 
 if [ "$status" = open ] && [ "$prev" != open ] && [ -n "$NTFY_TOPIC" ]; then
   curl -s -H "Title: Riken openday: slot available" -H "Priority: urgent" -H "Tags: rotating_light" \
-    -H "Click: $URL" -d "理研 一般公開(10/24)の入場登録に空きが出ました！タップして申し込み" \
+    -H "Click: $URL" -H "Actions: view, 今すぐ申し込む, $URL" -d "理研 一般公開(10/24)の入場登録に空きが出ました！すぐ申し込んでください
+$URL" \
     "https://ntfy.sh/$NTFY_TOPIC" > /dev/null
 fi
