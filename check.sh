@@ -4,7 +4,7 @@
 URL='https://www.ocans.jp/openday-tsurumi/entry/all?FID=uyEGjrCP'
 STATE_FILE="${STATE_FILE:-state}"
 
-[ "$(TZ=Asia/Tokyo date +%Y%m%d)" -gt 20261024 ] && { echo "event over"; exit 0; }
+[ "$(TZ=Asia/Tokyo date +%Y%m%d)" -gt 20261023 ] && { echo "event over"; exit 0; }
 
 html=$(curl -sL --max-time 30 -A 'Mozilla/5.0' "$URL") || { echo "fetch error"; exit 0; }
 li=$(printf '%s' "$html" | grep -m1 'id="event-li-015001"')
