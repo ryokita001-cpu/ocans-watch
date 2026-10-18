@@ -1,6 +1,6 @@
 # ocans-watch
 
-> **GitHub Actions 側は停止中（2026-10-18）**: ntfy 通知が不要になったため、ワークフロー `watch` を無効化した（`gh workflow disable watch`）。再開は `gh workflow enable watch`。コード・Secrets `NTFY_TOPIC`・ローカルの控えは残してある。Mac 側の launchd 監視は、この時点では止めていない（下記）。以下は稼働時の仕様。
+> **停止中（2026-10-18）**: ntfy 通知が不要になったため、GitHub Actions のワークフロー `watch` を無効化し（`gh workflow disable watch`）、Mac 側の launchd も解除した（`launchctl bootout gui/$(id -u)/com.kitaryo.ocans-watch`）。再開は `gh workflow enable watch` と `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.kitaryo.ocans-watch.plist`。コード・Secrets `NTFY_TOPIC`・plist・ローカルの控えは残してある。launchd を解除したため、10/24 以降の `cleanup.sh` による自動片付け（archive・クローン削除）は走らない。以下は稼働時の仕様。
 
 理研・横浜市大 一般公開2026（10/24）の入場登録が満席から再開されたら、ntfy でスマホに通知する。
 
